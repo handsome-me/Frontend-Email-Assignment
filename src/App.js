@@ -1,6 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 
+
+
+/**
+ * 
+ * body
+ * avatar
+ * emailList
+ * email 
+ * 
+ */
+
+
 function App() {
   return (
     <div className="App">
