@@ -16,11 +16,17 @@ import "./index.css"
 */
  const Email = (props) =>{
 
-    const {id,from,subject,short_description,date,read}=props;
+    const {id,from,subject,short_description,date,read,onClick}=props;
     const {email,name}=from;
     console.log("email---->>...",from,subject);
+    console.log("id",id);
+
+      function fn(event) {
+          console.log("121",id);
+        onClick(id)
+    }
      return (
-         <div className="email-container">
+         <div onClick={fn} className="email-container">
              <div className='avatar-container'>imageAvatar</div>
              <div id={id} className='email-information'>
                  {renderHTML("from",email,name)}

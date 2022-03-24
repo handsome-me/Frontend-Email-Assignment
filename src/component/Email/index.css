@@ -4,6 +4,7 @@
     display: flex;
     border:1px solid var(--BORDER);
     background-color: var(--BACKGROUND);
+    cursor: pointer;
 
 }
 .email-information{
