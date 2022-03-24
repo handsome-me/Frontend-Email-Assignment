@@ -1,0 +1,24 @@
+.email-container{
+
+    border:1px solid pink;
+    display: flex;
+    border:1px solid var(--BORDER);
+    background-color: var(--BACKGROUND);
+
+}
+.email-information{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    color: var(--TEXT);
+}
+
+.avatar-container{
+    display: block;
+    width:100px;
+    padding: 20px;
+}
+
+.read-email{
+    background-color: var(--READBACKGROUND);
+}

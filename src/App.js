@@ -1,35 +1,41 @@
 import logo from './logo.svg';
 import './App.css';
-
-
-
-/**
- * 
- * body
- * avatar
- * emailList
- * email 
- * 
- */
+import { useEffect ,useState} from 'react';
+import {makeFetchCall} from './Utils/api/index';
+import EmailList from './component/EmailList';
+ 
 
 
 function App() {
+
+    const [emailList,setEmailList]=useState([]);
+
+  async function callAPI(){
+   
+    console.log("called the api");
+
+    //make api call
+    const res=await makeFetchCall();
+    console.log("api call data",res);
+     setEmailList(res);
+
+  }
+    
+ 
+  useEffect(()=>{
+
+    console.log('useeffect');
+    callAPI();
+
+  },[]);
+
+
+  console.log("fdfdfdfd");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <EmailList
+      list={emailList}
+      />
     </div>
   );
 }

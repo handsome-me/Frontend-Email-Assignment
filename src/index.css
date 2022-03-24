@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*
+COLORS:{
+     ACCENT:"#E54065",
+     BACKGROUND:"#F4F5F9",
+     BORDER:"#CFD2DC",
+     TEXT:"#636363",
+     FILTERBUTTON:"#E1E4EA",
+     READBACKGROUND:"#F2F2F2"
+   }*/
+
+
+:root{
+  --ACCENT:"#E54065";
+  --BACKGROUND:"#F4F5F9";
+  --BORDER:#CFD2DC;
+  --TEXT:#636363;
+  --FILTERBUTTON:#E1E4EA;
+  --READBACKGROUND:#F2F2F2;
+
+}
