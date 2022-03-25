@@ -6,15 +6,17 @@ const STATE="STATE";
  */
 
 export const setLocalStorage=(filteredState)=>{
+    
     // To store data
-localStorage.setItem(STATE,filteredState);
+localStorage.setItem(STATE,JSON.stringify(filteredState));
  
 };
 
 export const getLocalStorage=()=>{
     
 // To retrieve data
-return localStorage.getItem(STATE);
+return JSON.parse(localStorage.getItem(STATE) || "[]");
+ 
 
 }
  

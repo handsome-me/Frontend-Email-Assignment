@@ -14,13 +14,13 @@ export const Context=createContext();
 
 const  MyContext=({children})=>{
 
-    const [emailList,setEmailList]=useState(()=>{
+    const [emailList,setEmailList]=useState([]);
+    const [filter,setFilter]=useState(()=>{
         const local=getLocalStorage();
-        if(local)
-        return local;
-        return [];
-    });
-    const [filter,setFilter]=useState([]); 
+        console.log("#131","local", local);
+        
+         return local;
+    }); 
     
 
      
@@ -37,11 +37,16 @@ const  MyContext=({children})=>{
   }
     
   useEffect(()=>{
-     
-      if(filter)
-    setLocalStorage(filter)
+    console.log("#131","filter in useEffet",filter);
+         if(filter.length){
+             console.log("#131","filter in useEffet",filter);
+            setLocalStorage(filter) 
+         }
+    
 
   },[filter])
+
+
     function emailClicked(id){
 
         setFilter((filterList)=>{
@@ -59,9 +64,9 @@ const  MyContext=({children})=>{
 
           console.log("after sorting","#121",filterList);
           //return with new reference
-          return {
+          return [
               ...filterList
-          }
+          ]
         })
 
     }
