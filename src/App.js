@@ -1,33 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
-import { useEffect ,useState} from 'react';
-import {makeFetchCall} from './Utils/api/index';
+import { useEffect ,useState,useContext} from 'react';
 import EmailList from './component/EmailList';
  import {fetchBodyDetail} from './Utils/api'
 import EmailBody from './component/EmailBody';
-
+import {Context}  from './Context/Context';
 
 function App() {
 
-    const [emailList,setEmailList]=useState([]);
+   const {emailList,filter}=useContext(Context);
     const [expandEmailBody,setExpand]=useState(null);
-    
-  async function callAPI(){
-   
-    console.log("called the api");
-
-    //make api call
-    const res=await makeFetchCall();
-    console.log("api call data",res);
-     setEmailList(res);
-
-  }
-    
+     console.log("filter","#131",filter);
  
   useEffect(()=>{
 
-    console.log('useeffect');
-    callAPI();
+    // console.log('useeffect');
+    // callAPI();
 
   },[]);
 
