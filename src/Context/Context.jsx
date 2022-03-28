@@ -30,13 +30,13 @@ const  MyContext=({children})=>{
       console.log("#121",".....selected......",filterType);
         switch(filterType){
             case FILTERTYPE.READ:{
-                const filteredData= filterData(filter,emailList);
+                const filteredData= filterData(filter,emailList,Constant.STATE.READ);
                 setEmailList(filteredData)
             return;
             }
             case FILTERTYPE.FAV:{
                
-               const filteredData= filterData(filter,emailList);
+               const filteredData= filterData(filter,emailList,Constant.STATE.FAV);
                  setEmailList(filteredData)
                 return;
             }
@@ -68,8 +68,10 @@ const  MyContext=({children})=>{
 
   },[filter])
 
+   
+    function emailClicked(id,filterType){
 
-    function emailClicked(id){
+      filterType=filterType?Constant.STATE.FAV:Constant.STATE.READ;
 
         setFilter((filterList)=>{
           const index=filterList.findIndex((item)=>{
@@ -78,10 +80,10 @@ const  MyContext=({children})=>{
           });
           
                  console.log("#141",index); 
-                 if(index>=0 && filterList.length)
-             filterList[index].state.push(Constant.STATE.READ);
+                 if(index>0 && filterList.length)
+               filterList[index].state.push(filterType);
             else{
-                filterList.push({id:id,state:[Constant.STATE.READ]})
+                filterList.push({id:id,state:[filterType]})
             }
 
           console.log("after sorting","#121",filterList);

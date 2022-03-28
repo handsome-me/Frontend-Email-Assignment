@@ -1,15 +1,11 @@
 
-
-export const filterData=(data,filtertype)=>{
-
-    console.log(" Data",data);
-    console.log("filtreType", filtertype);
-  
+ export const filterData=(data,filtertype,type)=>{
+ 
    const filtereData= filtertype.list.filter((item)=>{
         
         for(let i=0;i<data.length;i++){
             if(data[i].id===item.id){
-                return true;
+                return data[i].state.find((item)=>item===type)
             }
         }
     })
