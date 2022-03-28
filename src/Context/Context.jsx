@@ -3,7 +3,7 @@ import Constant from '../constants/index'
 import {makeFetchCall} from '../Utils/api/index';
 import {setLocalStorage,getLocalStorage} from '../Utils/LocalStorage/localStorage'
 import {FILTERTYPE} from '../constants/index';
-
+import {filterData} from '../Utils/filterFunction';
 
 
  
@@ -27,15 +27,17 @@ const  MyContext=({children})=>{
     
 
     const handleFilterClick=(filterType)=>{
-        
+      console.log("#121",".....selected......",filterType);
         switch(filterType){
             case FILTERTYPE.READ:{
-               
+                const filteredData= filterData(filter,emailList);
+                setEmailList(filteredData)
             return;
             }
             case FILTERTYPE.FAV:{
                
-
+               const filteredData= filterData(filter,emailList);
+                 setEmailList(filteredData)
                 return;
             }
 
