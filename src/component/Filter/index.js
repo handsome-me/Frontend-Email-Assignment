@@ -1,12 +1,10 @@
 import React ,{useState,useContext} from 'react';
 import { Context } from '../../Context/Context';
-const READ="READ";
-const UNREAD="UNREAD";
-const FAV="FAV";
+import './index.css';
 
-const Filter=()=>{
+const Filter=({title,active,handleFilterClick})=>{
    
-    const {handleFilterClick}=useContext(Context);
+     
 
     const onClick=(event)=>{
         event.stopPropagation();
@@ -15,15 +13,22 @@ const Filter=()=>{
         handleFilterClick(id);
 
     }
+    /**
+     * border-radius: 20px;
+    border: 1px solid;
+     */
+    const activeStyle={
+      borderRadius:"20px",
+       border:"1px solid #F4F5F9",
+       backgroundColor:"#F4F5F9"
+        
+    }
      
     return(
      <>
-      <div onClick={onClick}>
-          <button  id={READ}>Read</button>
-          <button id={UNREAD}>UnRead</button>
-          <button id={FAV}>Fav</button>
-         
-      </div>
+       
+          <button onClick={(event)=>onClick(event)} style={active?activeStyle:{}} className='filter-button'  id={title.toUpperCase()}>{title}</button>
+      
      </>
     )
 

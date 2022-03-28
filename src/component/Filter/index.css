@@ -1,0 +1,14 @@
+.filter-button{
+    color:black;
+    border: none;
+    background-color: transparent;
+     height: 20px;
+    box-sizing: border-box;
+    border-radius:20px;
+    
+}
+
+.filter-button:hover{
+    border: 0.5px solid gray;
+    border-radius:20px;
+}

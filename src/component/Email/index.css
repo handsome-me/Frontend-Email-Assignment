@@ -5,6 +5,10 @@
     border:1px solid var(--BORDER);
     background-color: var(--BACKGROUND);
     cursor: pointer;
+    border: 1px solid var(--BORDER);
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
 
 }
 .email-information{

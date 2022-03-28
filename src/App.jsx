@@ -13,7 +13,7 @@ import Constant from './constants/index'
 
 function App() {
 
-   const {emailList,filter,filterType}=useContext(Context);
+   const {emailList,filter,filterType,handleFilterClick}=useContext(Context);
     const [expandEmailBody,setExpand]=useState(null);
      
     
@@ -78,9 +78,26 @@ function getFilteredData(type){
   console.log("fdfdfdfd");
   return (
     <div className="App">
-      <Filter
+    <div className='filter-container'>
+      <span style={{color:'black'}}>Filter : </span>
+    <Filter
+      title={"Read"}
+      active={filterType.toLowerCase()==="read"?true:false}
+      handleFilterClick={handleFilterClick}
       />
-      <EmailList
+        <Filter
+      title={"UnRead"}
+      active={filterType.toLowerCase()==="unread"?true:false}
+      handleFilterClick={handleFilterClick}
+      />
+        <Filter
+      title={"Fav"}
+      active={filterType.toLowerCase()==="fav"?true:false}
+      handleFilterClick={handleFilterClick}
+      />
+    </div>
+     <div className='flex'>
+     <EmailList
       list={filteredData}
       onClick={handleEmailClick}
       />
@@ -91,6 +108,7 @@ function getFilteredData(type){
          data={expandEmailBody.data}
         />)
       }
+     </div>
     </div>
   );
 }
