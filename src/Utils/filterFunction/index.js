@@ -14,5 +14,9 @@ export const filterData=(data,filtertype)=>{
         }
     })
     console.log("#121","filteredData",filtereData);
+    return {
+        list:filtereData,
+        total:filtereData.length
+    };
    
 }

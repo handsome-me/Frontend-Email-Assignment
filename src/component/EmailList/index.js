@@ -5,7 +5,7 @@ import './index.css'
 const EmailList=(props)=>{
 const {list,onClick}=props;
 
-console.log("list",list.list);
+console.log("list",list);
 console.log("list",list.list);
 
   return(

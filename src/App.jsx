@@ -12,7 +12,7 @@ function App() {
    const {emailList,filter}=useContext(Context);
     const [expandEmailBody,setExpand]=useState(null);
      
-     console.log("filter","#131",filter);
+     console.log("filter","#131",emailList);
  
   useEffect(()=>{
 
