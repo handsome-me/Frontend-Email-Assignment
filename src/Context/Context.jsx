@@ -2,7 +2,11 @@ import React, {createContext, useEffect,useState} from 'react';
 import Constant from '../constants/index'
 import {makeFetchCall} from '../Utils/api/index';
 import {setLocalStorage,getLocalStorage} from '../Utils/LocalStorage/localStorage'
-export const Context=createContext();
+import {FILTERTYPE} from '../constants/index';
+
+
+
+ 
 
 /**
  * filter structure
@@ -11,18 +15,34 @@ export const Context=createContext();
  *  state:["read","fav"]
  *  }]
  */
-
+ 
 const  MyContext=({children})=>{
-
+    
     const [emailList,setEmailList]=useState([]);
     const [filter,setFilter]=useState(()=>{
         const local=getLocalStorage();
-        console.log("#131","local", local);
-        
          return local;
-    }); 
+    });
+    const [filterType,setFilterType]=useState(FILTERTYPE.DEFAULT);
     
 
+    const handleFilterClick=(filterType)=>{
+        
+        switch(filterType){
+            case FILTERTYPE.READ:{
+               
+            return;
+            }
+            case FILTERTYPE.FAV:{
+               
+
+                return;
+            }
+
+            default: return FILTERTYPE.DEFAULT;
+            
+        }
+    }
      
     
   async function callAPI(){
@@ -55,9 +75,9 @@ const  MyContext=({children})=>{
               return true;
           });
           
-               
-                 if(index && filterList.length)
-          filterList[index].state.push(Constant.STATE.READ);
+                 console.log("#141",index); 
+                 if(index>=0 && filterList.length)
+             filterList[index].state.push(Constant.STATE.READ);
             else{
                 filterList.push({id:id,state:[Constant.STATE.READ]})
             }
@@ -69,22 +89,27 @@ const  MyContext=({children})=>{
           ]
         })
 
-    }
+    }   
     const value_={
         emailList,
         filter,
-        emailClicked
+        emailClicked,
+        handleFilterClick
+
     }
 
 
     /**
      * useEffects
      */
-     useEffect(callAPI,[]);
+     useEffect(()=>{
+         callAPI();
+     },[]);
 
 
     //end
 
+   
     return(
         <Context.Provider
         value={value_}
@@ -92,6 +117,8 @@ const  MyContext=({children})=>{
          {children}
         </Context.Provider> 
     )
-}
 
+    }
+    
+export const Context=createContext({});
 export default MyContext;

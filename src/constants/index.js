@@ -8,3 +8,9 @@ export default{
    }
     
 }
+
+export const FILTERTYPE={
+    DEFAULT:"DEFUALT",
+    READ:"READ",
+    FAV:"FAV"
+  }

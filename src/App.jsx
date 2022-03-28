@@ -5,17 +5,19 @@ import EmailList from './component/EmailList';
  import {fetchBodyDetail} from './Utils/api'
 import EmailBody from './component/EmailBody';
 import {Context}  from './Context/Context';
+import Filter from './component/Filter';
 
 function App() {
 
    const {emailList,filter}=useContext(Context);
     const [expandEmailBody,setExpand]=useState(null);
+     
      console.log("filter","#131",filter);
  
   useEffect(()=>{
 
-    // console.log('useeffect');
-    // callAPI();
+      // console.log('useeffect');
+     // callAPI();
 
   },[]);
 
@@ -38,6 +40,8 @@ function App() {
   console.log("fdfdfdfd");
   return (
     <div className="App">
+      <Filter
+      />
       <EmailList
       list={emailList}
       onClick={handleEmailClick}
