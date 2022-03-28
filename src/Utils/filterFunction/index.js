@@ -1,6 +1,10 @@
 
  export const filterData=(data,filtertype,type)=>{
  
+
+    if(type.toLowerCase()==="default")
+    return filtertype;
+
    const filtereData= filtertype.list.filter((item)=>{
         
         for(let i=0;i<data.length;i++){

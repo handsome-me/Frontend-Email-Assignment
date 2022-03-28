@@ -6,15 +6,24 @@ import EmailList from './component/EmailList';
 import EmailBody from './component/EmailBody';
 import {Context}  from './Context/Context';
 import Filter from './component/Filter';
+import {FILTERTYPE} from './constants/index';
+import {filterData} from './Utils/filterFunction';
+
+import Constant from './constants/index'
 
 function App() {
 
-   const {emailList,filter}=useContext(Context);
+   const {emailList,filter,filterType}=useContext(Context);
     const [expandEmailBody,setExpand]=useState(null);
      
-     console.log("filter","#131",emailList);
- 
-  useEffect(()=>{
+    
+
+      const filteredData=getFilteredData(filterType);
+      console.log("filter","#131",emailList);
+      console.log("filter type","#131",filteredData);
+
+     
+    useEffect(()=>{
 
       // console.log('useeffect');
      // callAPI();
@@ -37,13 +46,42 @@ function App() {
     
   }
 
+
+
+
+
+
+
+
+
+
+  
+function getFilteredData(type){
+
+  switch(type){
+    case FILTERTYPE.READ:{
+        const filteredData= filterData(filter,emailList,Constant.STATE.READ);
+         
+    return filteredData;
+    }
+    case FILTERTYPE.FAV:{
+       
+       const filteredData= filterData(filter,emailList,Constant.STATE.FAV);
+        
+        return filteredData;
+    }
+
+    default: return emailList;
+    
+}
+ }
   console.log("fdfdfdfd");
   return (
     <div className="App">
       <Filter
       />
       <EmailList
-      list={emailList}
+      list={filteredData}
       onClick={handleEmailClick}
       />
       {
@@ -58,3 +96,6 @@ function App() {
 }
 
 export default App;
+
+
+ 

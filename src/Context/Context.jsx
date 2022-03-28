@@ -3,8 +3,7 @@ import Constant from '../constants/index'
 import {makeFetchCall} from '../Utils/api/index';
 import {setLocalStorage,getLocalStorage} from '../Utils/LocalStorage/localStorage'
 import {FILTERTYPE} from '../constants/index';
-import {filterData} from '../Utils/filterFunction';
-
+ 
 
  
 
@@ -27,23 +26,10 @@ const  MyContext=({children})=>{
     
 
     const handleFilterClick=(filterType)=>{
-      console.log("#121",".....selected......",filterType);
-        switch(filterType){
-            case FILTERTYPE.READ:{
-                const filteredData= filterData(filter,emailList,Constant.STATE.READ);
-                setEmailList(filteredData)
-            return;
-            }
-            case FILTERTYPE.FAV:{
-               
-               const filteredData= filterData(filter,emailList,Constant.STATE.FAV);
-                 setEmailList(filteredData)
-                return;
-            }
+      
+        //set filtertype
+        setFilterType(filterType);
 
-            default: return FILTERTYPE.DEFAULT;
-            
-        }
     }
      
     
@@ -78,16 +64,13 @@ const  MyContext=({children})=>{
               if(item.id==id)
               return true;
           });
-          
-                 console.log("#141",index); 
+                 
                  if(index>0 && filterList.length)
                filterList[index].state.push(filterType);
             else{
                 filterList.push({id:id,state:[filterType]})
             }
 
-          console.log("after sorting","#121",filterList);
-          //return with new reference
           return [
               ...filterList
           ]
@@ -98,8 +81,8 @@ const  MyContext=({children})=>{
         emailList,
         filter,
         emailClicked,
-        handleFilterClick
-
+        handleFilterClick,
+        filterType
     }
 
 
